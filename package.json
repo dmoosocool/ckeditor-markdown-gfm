@@ -95,6 +95,7 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-source-editing": "^41.1.0",
+    "@dmoosocool/marked-math": "^0.0.0",
     "@isaul32/ckeditor5-math": "^41.1.0",
     "katex": "^0.16.9",
     "marked": "^12.0.0",

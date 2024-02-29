@@ -8,7 +8,7 @@
  */
 
 import { marked } from 'marked';
-import markedKatex from './marked-katex-math';
+import markedKatex from '@dmoosocool/marked-math';
 
 // Overrides.
 marked.use( {
@@ -50,12 +50,6 @@ export default function markdown2html( markdown: string ): string | Promise<stri
 		headerIds: false
 	};
 	marked.use( markedKatex( { throwOnError: false } ) );
-
-	// marked.use( {
-	// 	extend( ...args: Array<any> ) {
-	// 		console.log( args );
-	// 	}
-	// } );
 	return marked.parse( markdown, options );
 }
 
