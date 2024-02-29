@@ -5,9 +5,7 @@ declare global {
 }
 
 import CKEditorInspector from '@ckeditor/ckeditor5-inspector';
-
 import { ClassicEditor } from '@ckeditor/ckeditor5-editor-classic';
-
 import { Autoformat } from '@ckeditor/ckeditor5-autoformat';
 import { Bold, Code, Italic } from '@ckeditor/ckeditor5-basic-styles';
 import { BlockQuote } from '@ckeditor/ckeditor5-block-quote';
@@ -22,76 +20,92 @@ import { MediaEmbed } from '@ckeditor/ckeditor5-media-embed';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
-
+import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
+import Math from '@isaul32/ckeditor5-math/src/math';
+import AutoformatMath from '@isaul32/ckeditor5-math/src/autoformatmath';
 import Markdown from '../src/markdown';
 
-ClassicEditor
-	.create( document.getElementById( 'editor' )!, {
-		plugins: [
-			Markdown,
-			Essentials,
-			Autoformat,
-			BlockQuote,
-			Bold,
-			Heading,
-			Image,
-			ImageCaption,
-			ImageStyle,
-			ImageToolbar,
-			ImageUpload,
-			Indent,
-			Italic,
-			Link,
-			List,
-			MediaEmbed,
-			Paragraph,
-			Table,
-			TableToolbar,
-			CodeBlock,
-			Code,
-			Base64UploadAdapter
-		],
+const editorConfig = {
+	plugins: [
+		Math,
+		AutoformatMath,
+		Markdown,
+		SourceEditing,
+		Essentials,
+		Autoformat,
+		BlockQuote,
+		Bold,
+		Heading,
+		Image,
+		ImageCaption,
+		ImageStyle,
+		ImageToolbar,
+		ImageUpload,
+		Indent,
+		Italic,
+		Link,
+		List,
+		MediaEmbed,
+		Paragraph,
+		Table,
+		TableToolbar,
+		CodeBlock,
+		Code,
+		Base64UploadAdapter
+	],
+	toolbar: [
+		'sourceEditing',
+		'math',
+		'|',
+		'heading',
+		'|',
+		'bold',
+		'italic',
+		'link',
+		'code',
+		'bulletedList',
+		'numberedList',
+		'|',
+		'outdent',
+		'indent',
+		'|',
+		'uploadImage',
+		'blockQuote',
+		'insertTable',
+		'mediaEmbed',
+		'codeBlock',
+		'|',
+		'undo',
+		'redo'
+	],
+	image: {
 		toolbar: [
-			'markdownButton',
+			'imageStyle:inline',
+			'imageStyle:block',
+			'imageStyle:side',
 			'|',
-			'heading',
-			'|',
-			'bold',
-			'italic',
-			'link',
-			'code',
-			'bulletedList',
-			'numberedList',
-			'|',
-			'outdent',
-			'indent',
-			'|',
-			'uploadImage',
-			'blockQuote',
-			'insertTable',
-			'mediaEmbed',
-			'codeBlock',
-			'|',
-			'undo',
-			'redo'
-		],
-		image: {
-			toolbar: [
-				'imageStyle:inline',
-				'imageStyle:block',
-				'imageStyle:side',
-				'|',
-				'imageTextAlternative'
-			]
-		},
-		table: {
-			contentToolbar: [
-				'tableColumn',
-				'tableRow',
-				'mergeTableCells'
-			]
+			'imageTextAlternative'
+		]
+	},
+	table: {
+		contentToolbar: [
+			'tableColumn',
+			'tableRow',
+			'mergeTableCells'
+		]
+	},
+	math: {
+		engine: 'katex',
+		katexRenderOptions: {
+			macros: {
+				'\\neq': '\\mathrel{\\char`≠}'
+			}
 		}
-	} )
+	}
+};
+
+ClassicEditor
+	.create( document.getElementById( 'editor' )!, editorConfig )
 	.then( editor => {
 		window.editor = editor;
 		CKEditorInspector.attach( editor );

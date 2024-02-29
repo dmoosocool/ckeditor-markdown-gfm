@@ -1,17 +1,10 @@
 {
-  "plugins": [
-    {
-      "name": "Markdown",
-      "className": "Markdown",
-      "description": "Adds text to the editor.",
-      "path": "src/markdown.ts",
-      "uiComponents": [
-        {
-          "name": "markdownButton",
-          "type": "Button",
-          "iconPath": "theme/icons/ckeditor.svg"
-        }
-      ]
-    }
-  ]
+	"plugins": [
+		{
+			"name": "Markdown",
+			"className": "Markdown",
+			"description": "Produces the Markdown output instead of HTML output straight from the editor content, making CKEditor 5 more versatile in a variety of environments.",
+			"path": "src/markdown.ts"
+		}
+	]
 }
