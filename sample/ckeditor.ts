@@ -21,8 +21,8 @@ import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
 import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { Base64UploadAdapter } from '@ckeditor/ckeditor5-upload';
 import { SourceEditing } from '@ckeditor/ckeditor5-source-editing';
-import Math from '@isaul32/ckeditor5-math/src/math';
-import AutoformatMath from '@isaul32/ckeditor5-math/src/autoformatmath';
+import Math from '@dmoosocool/ckeditor5-math/src/math';
+import AutoformatMath from '@dmoosocool/ckeditor5-math/src/autoformatmath';
 import Markdown from '../src/markdown';
 
 const editorConfig = {
